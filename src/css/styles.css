@@ -1546,6 +1546,7 @@ body::before {
   }
   
   .hero-stats {
+    display: grid;
     justify-content: center;
   }
   
@@ -2616,6 +2617,11 @@ body::before {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
   }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .services-grid, .team-grid, .projects-grid, .solutions-grid, .contact-options-grid {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
@@ -2632,6 +2638,7 @@ body::before {
   }
   .hamburguer {
     display: flex;
+    align-items: center;
   }
 }
 
