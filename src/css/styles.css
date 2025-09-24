@@ -129,6 +129,12 @@ html {
   font-size: 16px;
 }
 
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
@@ -141,10 +147,11 @@ body {
     radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
   background-attachment: fixed;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
+
 body::before {
   content: '';
   position: fixed;
@@ -158,26 +165,34 @@ body::before {
   background-size: 60px 60px;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.1; /* Opacidade mantida */
+  opacity: 0.1;
 }
 
-/* Responsivo para o body::before */
+/* Esconder em telas menores */
 @media (max-width: 768px) {
-  body::before {
-    background-size: 30px 30px;
-    opacity: 0.1; /* Opacidade mantida */
+  body {
+    width: 100%;
   }
 }
 
-@media (max-width: 520px) {
-  body::before {
-    display: none !important; /* Forçando que desapareça abaixo de 520px */
+/* Esconder em telas menores */
+@media (max-width: 500px) {
+  body {
+    width: 100%;
   }
 }
 
-@media (max-width: 480px) {
-  body::before {
-    display: none !important; /* Garantindo que continue invisível abaixo de 480px */
+@media (max-width: 450px) {
+  body {
+    width: 100%;
+  }
+}
+
+
+/* Responsivo para o body::before 
+@media (max-width: 495px) {
+  body {
+    left: 1rem;
   }
 }
 
@@ -367,13 +382,6 @@ body::before {
   opacity: 0.5;
   pointer-events: none;
 }
-
-@media (max-width: 520px) {
-  .header::before {
-    display: none !important;
-  }
-}
-
 
 .navbar {
   padding: var(--space-md) 0;
@@ -1468,7 +1476,6 @@ body::before {
   .hero-container {
     grid-template-columns: 1fr;
     gap: var(--space-2xl);
-    text-align: center;
   }
   
   .about-content {
