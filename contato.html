@@ -7,6 +7,7 @@
     
     <!-- Modern Tech Design System -->
     <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/contato.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -47,7 +48,19 @@
                         <div class="dropdown-menu">
                             <a href="index.html#services" class="dropdown-link">Desenvolvimento Web</a>
                             <a href="index.html#services" class="dropdown-link">Segurança Cibernética</a>
+                            <a href="index.html#services" class="dropdown-link">Desenvolvimento desktop</a>
+                            <a href="index.html#services" class="dropdown-link">Backend</a>
+                            <a href="index.html#services" class="dropdown-link">IA</a>
                             <a href="index.html#services" class="dropdown-link">Consultoria</a>
+                            <a href="index.html#services" class="dropdown-link">Hacker ético</a>
+                            <a href="index.html#services" class="dropdown-link">OSINT</a>
+                            <a href="index.html#services" class="dropdown-link">Treinamentos</a>
+                            <a href="index.html#services" class="dropdown-link">DevOps</a>
+                            <a href="index.html#services" class="dropdown-link">Open Source</a>
+                            <a href="index.html#services" class="dropdown-link">Segurança de identidade</a>
+                            <a href="index.html#services" class="dropdown-link">Dark Web</a>
+                            <a href="index.html#services" class="dropdown-link">Roteadores</a>
+                            <a href="index.html#services" class="dropdown-link">IoT</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -56,15 +69,11 @@
                     <li class="nav-item">
                         <a href="portfólio.html" class="nav-link">Portfólio</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link" >Soluções <i class="fas fa-chevron-down"></i></a>
+                    <li class="nav-item dropdown" >
+                        <a href="inovacao.html" class="nav-link" >Soluções <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="inovacao.html" class="dropdown-link">Sistemas</a>
-                            <a href="galeria.html" class="dropdown-link">Vídeos</a>
+                            <a href="inovacao.html" class="dropdown-link">Sistemas desenvolvidos</a>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contato.html" class="nav-link active">Contato</a>
                     </li>
                 </ul>
                 
@@ -78,14 +87,14 @@
                     <span></span>
                 </div>
 
-                              <!-- Menu que será aberto -->
+                <!-- Menu que será aberto -->
                 <nav class="menu" id="menu">
                     <ul>
                         <li>
                             <a href="index.html">Início</a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link">Serviços <i class="fas fa-chevron-down"></i></a>
+                            <a href="index.html#services" class="nav-link">Serviços</a>
                             <div class="dropdown-menu">
                                 <a href="#services" class="dropdown-link">Desenvolvimento Web</a>
                                 <a href="#services" class="dropdown-link">Segurança Cibernética</a>
@@ -99,24 +108,20 @@
                             </div>
                         </li>
                         <li>
-                            <a href="#team">Equipe</a>
+                            <a href="index.html#team">Equipe</a>
                         </li>
                         <li>
                             <a href="portfólio.html">Portfólio</a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link" >Soluções <i class="fas fa-chevron-down"></i></a>
+                            <a href="inovacao.html" class="nav-link" >Soluções</a>
                             <div class="dropdown-menu">
                                 <a href="inovacao.html" class="dropdown-link">Sistemas</a>
-                                <a href="galeria.html" class="dropdown-link">Vídeos</a>
                             </div>
                         </li>
-                        <li>
-                            <a href="#">Contato</a>
-                        </li>
-                        <li>
+                        <!--<li>
                             <a href="hadder_os.html">Hadder OS</a>
-                        </li>
+                        </li>-->
                     </ul>
                 </nav>
             </div>
@@ -135,7 +140,7 @@
                     
                     <h1 class="hero-title">
                         Grandes <span class="gradient-text">ideias</span> 
-                        merecem um grande <span class="gradient-text">site</span>!
+                        merecem um grande <span class="gradient-text">sistema</span>!
                     </h1>
                     
                     <p class="hero-description">
@@ -162,7 +167,7 @@
                         </div>
                         <div class="stat-item">
                             <span class="stat-number">100%</span>
-                            <span class="stat-label">Gratuito</span>
+                            <span class="stat-label">Personalizável</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-number">∞</span>
@@ -440,6 +445,14 @@
                                         </div>
                                     </label>
                                     <label class="radio-option">
+                                        <input type="radio" name="$servico" value="prox_inovacao">
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-content">
+                                            <i class="fas fa-lightbulb"></i>
+                                            <span>Próxima Inovação</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
                                         <input type="radio" name="$servico" value="duvida">
                                         <span class="radio-custom"></span>
                                         <div class="radio-content">
@@ -447,12 +460,26 @@
                                             <span>Dúvida</span>
                                         </div>
                                     </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="$servico" value="outro" id="radio-outro">
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-content">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span>Outro</span>
+                                        </div>
+                                    </label>
+
+                                    <!-- Campo de texto que só aparece se "Outro" for selecionado -->
+                                    <div id="outro-texto" class="hidden">
+                                        <label for="outro-input">Se escolheu "Outro":</label>
+                                        <input type="text" id="outro-input" name="outro_descricao" placeholder="Digite aqui o serviço..." />
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="subject">Conte-nos sobre seu projeto</label>
-                                <textarea id="subject" name="$sobre" rows="5" placeholder="Descreva suas necessidades, objetivos e qualquer informação relevante sobre o projeto..." required></textarea>
+                                <label for="subject">Conte-nos sobre seu projeto ou ignore se for pra ser notificado sobre a próxima inovação</label>
+                                <textarea id="subject" name="$sobre" rows="5" placeholder="Descreva suas necessidades, objetivos e qualquer informação relevante sobre o projeto..."></textarea>
                             </div>
 
                             <div class="form-group">
@@ -738,6 +765,20 @@
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'all 0.6s ease';
             observer.observe(card);
+        });
+
+        // Seleciona todos os radios
+        const radios = document.querySelectorAll('input[name="servico"]');
+        const outroTexto = document.getElementById('outro-texto');
+
+        radios.forEach(radio => {
+            radio.addEventListener('change', function () {
+                if (this.value === 'outro') {
+                    outroTexto.classList.remove('hidden');
+                } else {
+                    outroTexto.classList.add('hidden');
+                }
+            });
         });
     </script>
 </body>
