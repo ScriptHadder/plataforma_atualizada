@@ -17,15 +17,15 @@
     <!-- Open Graph -->
     <meta property="og:title" content="ScriptHadder - Soluções Tecnológicas Profissionais">
     <meta property="og:description" content="Transformamos ideias em soluções digitais inovadoras com foco em segurança e performance">
-    <meta property="og:image" content="https://renanmestre.github.io/scripthadder/src/img/icone.png">
-    <meta property="og:url" content="https://renanmestre.github.io/scripthadder/">
+    <meta property="og:image" content="https://scripthadder.com.br/src/img/icone.png">
+    <meta property="og:url" content="https://scripthadder.com.br">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ScriptHadder - Soluções Tecnológicas Profissionais">
     <meta name="twitter:description" content="Transformamos ideias em soluções digitais inovadoras com foco em segurança e performance">
-    <meta name="twitter:image" content="https://renanmestre.github.io/scripthadder/src/img/icone.png">
+    <meta name="twitter:image" content="https://scripthadder.com.br/src/img/icone.png">
 </head>
 <body>
     <!-- Header Microsoft Style -->
@@ -47,6 +47,7 @@
                         <div class="dropdown-menu">
                             <a href="#services" class="dropdown-link">Desenvolvimento Web</a>
                             <a href="#services" class="dropdown-link">Segurança Cibernética</a>
+                            <a href="#services" class="dropdown-link">Segurança em codificações</a>
                             <a href="#services" class="dropdown-link">Desenvolvimento desktop</a>
                             <a href="#services" class="dropdown-link">Backend</a>
                             <a href="#services" class="dropdown-link">IA</a>
@@ -64,6 +65,12 @@
                     </li>
                     <li class="nav-item">
                         <a href="#team" class="nav-link">Equipe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#avaliacoes" class="nav-link">Avaliações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#parcerias" class="nav-link">Parcerias</a>
                     </li>
                     <li class="nav-item">
                         <a href="portfólio.html" class="nav-link">Portfólio</a>
@@ -111,6 +118,12 @@
                         </li>
                         <li>
                             <a href="#team">Equipe</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#avaliacoes" class="nav-link">Avaliações</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#parcerias" class="nav-link">Parcerias</a>
                         </li>
                         <li>
                             <a href="portfólio.html">Portfólio</a>
@@ -160,6 +173,10 @@
                         <a href="#services" class="btn-secondary">
                             <i class="fas fa-play"></i>
                             <span>Ver serviços</span>
+                        </a>
+                        <a href="novidade2_0.html" class="btn-secondary" id="novidade2_0">
+                            <i class="fas fa-bolt"></i>
+                            <span>ScriptHadder 2.0</span>
                         </a>
                     </div>
 
@@ -370,6 +387,37 @@
                                 <li><i class="fas fa-check"></i> Análise de vulnerabilidades</li>
                                 <li><i class="fas fa-check"></i> Consultoria em segurança</li>
                                 <li><i class="fas fa-check"></i> Criptografia avançada</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <a href="contato.html#contact-form" class="btn-card">Solicitar orçamento</a>
+                        </div>
+                    </div>
+
+                    <!-- DevSecOps & AppSec -->
+                    <div class="service-card">
+                        <div class="card-header">
+                            <div class="service-icon">
+                                <i class="fas fa-shield-virus"></i>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>DevSecOps & AppSec</h3>
+                            <p>Sistemas desenvolvidos desde sua fundação até o mais avançado sendo monitorado e protegido com pipelines 
+                                automatizadas de segurança. <br>
+                                Junto com toda essa automação ainda tem as análises de arquitetura de sistemas e em busca de brechas de segurança em codificações.
+                            </p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> Scanners SAST e DAST</li>
+                                <li><i class="fas fa-check"></i> Terraform</li>
+                                <li><i class="fas fa-check"></i> GitLab CI/CD e GitHUb Actions</li>
+                                <li><i class="fas fa-check"></i> Docker</li>
+                                <li><i class="fas fa-check"></i> Cloud Security</li>
+                                <li><i class="fas fa-check"></i> Análise de ameaças</li>
+                                <li><i class="fas fa-check"></i> OWASP-10</li>
+                                <li><i class="fas fa-check"></i> Bandit, SonarQube e OWASP-ZIP</li>
+                                <li><i class="fas fa-check"></i> Emissão de relatórios</li>
+                                <li><i class="fas fa-check"></i> Arquitetura de software</li>
                             </ul>
                         </div>
                         <div class="card-footer">
@@ -734,7 +782,7 @@
                                 <span class="skill-tag">OSINT</span>
                             </div>
                             <div class="team-social">
-                                <a href="https://instagram.com/usuario_aqui" target="_blank" aria-label="Instagram de Mateus">
+                                <a href="https://www.instagram.com/remestre_devsec/" target="_blank" aria-label="Instagram de Mateus">
                                     <i class="fab fa-instagram"></i>
                                     <span>Instagram</span>
                                 </a>
@@ -1047,28 +1095,37 @@
         </section>-->
 
         <!-- Avaliação de clientes -->
-        <!--<section class="avaliacoes">
+        <section class="avaliacoes" id="avaliacoes">
             <div class="container">
-                <div class="section-header">
-                <h2>Avaliação de <span>clientes</span></h2>
-                <p>Veja o que nossos clientes dizem sobre nossos serviços.</p>
+               <div class="section-header">
+                    <span class="section-badge">Avaliações</span>
+                    <h2 class="section-title">
+                        O que nossos <span class="gradient-text">clientes</span> dizem?
+                    </h2>
+                    <p class="section-description">
+                        Diversos serviços prestados, mas todos com excelência e proatividade pra proteger nossos clientes e garantir 
+                        qualidade nos nossos serviços.
+                    </p>
                 </div>
                 <div class="avaliacoes-grid">
-                <div class="avaliacao-card">
-                    <p>"Simplesmente fantástico! Superaram minhas expectativas em todos os aspectos."</p>
-                    <span>— João Silva</span>
-                </div>
-                <div class="avaliacao-card">
-                    <p>"Profissionalismo e entrega rápida. Recomendo a todos."</p>
-                    <span>— Carla Andrade</span>
-                </div>
-                <div class="avaliacao-card">
-                    <p>"Sistema fácil de usar, suporte excelente. Nota 10!"</p>
-                    <span>— Marcos Teles</span>
-                </div>
+                    <div class="avaliacao-card">
+                        <p>"Atendimentoa <strong>ágil</strong>, <strong>cuidadoso</strong> e <strong>essencial</strong> num momento <strong>crítico</strong>. <br>Sou muito grato pelo <strong>profissionalismo</strong> e <strong>dedicação</strong>."</p>
+                        <span>— Anônimo</span> <br>
+                        <small class="servico-prestado">Serviço: Hacker Ético</small>
+                    </div>
+                    <div class="avaliacao-card">
+                        <p>"Profissional <strong>antensioso</strong> e <strong>disposto</strong>, serviço <strong>10/10!</strong>"</p>
+                        <span>— Micael F.</span> <br>
+                        <small class="servico-prestado">Serviço: Segurança Cibernética</small>
+                    </div>
+                    <div class="avaliacao-card">
+                        <p>"Equipe <strong>profissional</strong>, <strong>capacitada</strong>, <strong>super indico</strong>, podem contratar <strong>sem medo</strong>. <br>Foram <strong>além</strong> das minhas espectativas!"</p>
+                        <span>— Alessandra M.</span> <br>
+                        <small class="servico-prestado">Serviço: Desenvolvimento frontend</small>
+                    </div>
                 </div>
             </div>
-        </section>-->
+        </section>
 
         <!-- Ofertas
         <section class="ofertas" id="pricing">
@@ -1137,11 +1194,11 @@
                 <div class="parcerias-grid">
                     <!-- Decora Com Gabi -->
                     <div class="parceiro-card" id="decora_com_gabi">
-                        <a href="https://renanmestre.github.io/Gabi_front/"><img src="src/img/Parcerias/Decora Com Gabi.jpg" alt="Decora Com Gabi" class="parceiro-logo" /></a>
+                        <a href="index.html#parcerias"><img src="src/img/Parcerias/Decora Com Gabi.jpg" alt="Decora Com Gabi" class="parceiro-logo" /></a>
                     </div>
                     <!-- Guiatina -->
                     <div class="parceiro-card" id="guiatina">
-                        <a href="#"><img src="src/img/Parcerias/Guiatina.jpg" alt="Guiatina" class="parceiro-logo" /></a>
+                        <a href="index.html#parcerias"><img src="src/img/Parcerias/Guiatina.jpg" alt="Guiatina" class="parceiro-logo" /></a>
                     </div>
                 </div>
             </div>
