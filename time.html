@@ -332,7 +332,7 @@
                 x: 20, y: 50,
                 members: [
                     { name: "ARTHUR L.", role: "Líder do Frontend", ox: -3, oy: -2, img: "src/img/Hadders/arthur.jpg", bio: "Liderança técnica e arquitetura de sistemas distribuídos." },
-                    { name: "KAUÃ C.", role: "React JS, SASS e Tailwind", ox: -10, oy: 7, img: "src/img/Hadders/kauã.jpg", bio: "Especialista em infraestrutura server-side e APIs de alta performance." },
+                    { name: "KAUÃ C.", role: "React JS, SASS e Tailwind", ox: -10, oy: 7, img: "src/img/Hadders/kaua.jpg", bio: "Especialista em infraestrutura server-side e APIs de alta performance." },
                     { name: "GABRIEL", role: "Aprendiz", ox: -3, oy: 15, img: "src/img/Hadders/gabriel.jpg", bio: "Pesquisador focado em modelos generativos e automação inteligente." }
                 ]
             },
@@ -405,7 +405,7 @@
                     node.innerHTML = `
                         <div class="hexagon-outer">
                             <div class="hexagon-inner">
-                                <img src="${m.img}" alt="${m.name}" onerror="this.onerror=null; this.src='https://api.dicebear.com/7.x/bottts/svg?seed=${m.name}'">
+                                <img src="${m.img}" alt="${m.name}" onerror="this.onerror=null; console.error('Image not found:', this.src); this.src='https://api.dicebear.com/7.x/bottts/svg?seed=${m.name}'">
                             </div>
                         </div>
                         <div class="hex-label">
@@ -447,6 +447,10 @@
         function closeModal() {
             document.getElementById('profileModal').style.display = 'none';
         }
+
+        // Adicionado um comentário para o aviso do Tailwind CSS
+        // AVISO: Para produção, instale o Tailwind CSS como um plugin PostCSS ou use o Tailwind CLI.
+        // Consulte: https://tailwindcss.com/docs/installation
 
         // Particle System
         const canvas = document.getElementById('canvas-particles');
