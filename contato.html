@@ -27,6 +27,91 @@
     <meta name="twitter:title" content="Contato ScriptHadder - Vamos Transformar Suas Ideias">
     <meta name="twitter:description" content="Entre em contato conosco e vamos transformar suas ideias em soluções digitais inovadoras">
     <meta name="twitter:image" content="https://renanmestre.github.io/scripthadder/src/img/icone.png">
+
+    <script>
+    function formatPhone(input) {
+        let value = input.value.replace(/\D/g, "");
+        if (value.length > 11) value = value.slice(0, 11);
+
+        if (value.length > 6) {
+            value = `(${value.slice(0,2)}) ${value.slice(2,7)}-${value.slice(7)}`;
+        } else if (value.length > 2) {
+            value = `(${value.slice(0,2)}) ${value.slice(2)}`;
+        } else if (value.length > 0) {
+            value = `(${value}`;
+        }
+
+        input.value = value;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("contactForm");
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault(); // Evita o envio padrão do formulário
+
+            // Validação dos termos de uso
+            const termsCheckbox = document.getElementById('terms-checkbox');
+            if (!termsCheckbox.checked) {
+                alert("Você deve concordar com os Termos de Uso e Política de Privacidade para continuar.");
+                termsCheckbox.focus();
+                return;
+            }
+
+            const formData = new FormData(form);
+
+            // Chave de acesso diretamente no script
+            const accessKey = "sf_d5al7bk3edi620aj9ai6hanf";
+
+            // Adiciona a chave de acesso ao formulário
+            formData.append("accessKey", accessKey);
+
+            // Log dos dados enviados
+            console.log("Dados do formulário:");
+            for (const [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                });
+
+                console.log("Resposta da API:", response);
+
+                if (response.ok) {
+                    alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+                    form.reset();
+                } else {
+                    const errorText = await response.text();
+                    console.error("Erro na resposta da API:", errorText);
+                    alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.");
+                }
+            } catch (error) {
+                console.error("Erro de conexão:", error);
+                alert("Erro de conexão. Verifique sua internet e tente novamente.");
+            }
+        });
+    });
+    document.addEventListener("DOMContentLoaded", () => {
+        const radioOutro = document.getElementById("radio-outro");
+        const outroTexto = document.getElementById("outro-texto");
+        const radiosServico = document.querySelectorAll('input[name="servico"]');
+
+        radiosServico.forEach(radio => {
+            radio.addEventListener("change", () => {
+                if (radioOutro.checked) {
+                    outroTexto.classList.remove("hidden");
+                } else {
+                    outroTexto.classList.add("hidden");
+                    document.getElementById("outro-input").value = ""; // limpa se mudar de opção
+                }
+            });
+        });
+    });
+    </script>
+
 </head>
 <body>
     <!-- Header Microsoft Style -->
@@ -377,28 +462,29 @@
                     </div>
                     
                     <div class="contact-form-wrapper">
-                        <form id="contactForm" class="modern-form" action="https://api.staticforms.xyz/submit" method="post">
+                        <form id="contactForm" class="modern-form" action="https://api.staticforms.xyz/submit" method="POST">
+                            <!-- Static Form Hidden Fields -->
+                            <input type="hidden" name="redirectTo" value="https://scripthadder.com.br/contato.html">
+
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="first-name">Nome</label>
-                                    <input type="text" id="first-name" name="$primeiro_nome" placeholder="Seu primeiro nome" required>
+                                    <input type="text" id="primeiro-name" name="primeiro-nome" placeholder="Seu primeiro nome" required>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="last-name">Sobrenome</label>
-                                    <input type="text" id="last-name" name="$sobrenome" placeholder="Seu sobrenome" required>
+                                    <input type="text" id="ultimo-name" name="ultimo-nome" placeholder="Seu sobrenome" required>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" id="email" name="$email" placeholder="ex: email@dominio.com" required>
+                                    <input type="email" id="email" name="email" placeholder="ex: email@dominio.com" required>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="phone">Celular</label>
-                                    <input type="tel" id="phone" name="$phone" placeholder="(11) 99999-9999" maxlength="15" required oninput="formatPhone(this)">
+                                    <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" maxlength="15" required oninput="formatPhone(this)">
                                 </div>
                             </div>
 
@@ -406,7 +492,7 @@
                                 <label>Serviço de Interesse</label>
                                 <div class="radio-grid">
                                     <label class="radio-option">
-                                        <input type="radio" name="$servico" value="sistemas" required>
+                                        <input type="radio" name="servico" value="Desenvolvimento de sistemas" required>
                                         <span class="radio-custom"></span>
                                         <div class="radio-content">
                                             <i class="fas fa-code"></i>
@@ -414,7 +500,7 @@
                                         </div>
                                     </label>
                                     <label class="radio-option">
-                                        <input type="radio" name="$servico" value="seguranca">
+                                        <input type="radio" name="servico" value="Segurança cibernética">
                                         <span class="radio-custom"></span>
                                         <div class="radio-content">
                                             <i class="fas fa-shield-alt"></i>
@@ -422,7 +508,7 @@
                                         </div>
                                     </label>
                                     <label class="radio-option">
-                                        <input type="radio" name="$servico" value="consultoria">
+                                        <input type="radio" name="servico" value="Consultoria">
                                         <span class="radio-custom"></span>
                                         <div class="radio-content">
                                             <i class="fas fa-lightbulb"></i>
@@ -430,7 +516,7 @@
                                         </div>
                                     </label>
                                     <label class="radio-option">
-                                        <input type="radio" name="$servico" value="devsecops">
+                                        <input type="radio" name="servico" value="DevSec / AppSec / DevSecOps">
                                         <span class="radio-custom"></span>
                                         <div class="radio-content">
                                             <i class="fas fa-lock"></i>
@@ -438,7 +524,7 @@
                                         </div>
                                     </label>
                                     <label class="radio-option">
-                                        <input type="radio" name="$servico" value="parceria">
+                                        <input type="radio" name="servico" value="Parceria">
                                         <span class="radio-custom"></span>
                                         <div class="radio-content">
                                             <i class="fas fa-handshake"></i>
@@ -446,7 +532,7 @@
                                         </div>
                                     </label>
                                     <label class="radio-option">
-                                        <input type="radio" name="$servico" value="prox_inovacao">
+                                        <input type="radio" name="servico" value="Próxima Inovação">
                                         <span class="radio-custom"></span>
                                         <div class="radio-content">
                                             <i class="fas fa-lightbulb"></i>
@@ -454,7 +540,7 @@
                                         </div>
                                     </label>
                                     <label class="radio-option">
-                                        <input type="radio" name="$servico" value="duvida">
+                                        <input type="radio" name="servico" value="Dúvida">
                                         <span class="radio-custom"></span>
                                         <div class="radio-content">
                                             <i class="fas fa-question-circle"></i>
@@ -462,7 +548,7 @@
                                         </div>
                                     </label>
                                     <label class="radio-option">
-                                        <input type="radio" name="$servico" value="outro" id="radio-outro">
+                                        <input type="radio" name="servico" value="Outro" id="radio-outro">
                                         <span class="radio-custom"></span>
                                         <div class="radio-content">
                                             <i class="fas fa-question-circle"></i>
@@ -470,54 +556,53 @@
                                         </div>
                                     </label>
 
-                                    <!-- Campo de texto que só aparece se "Outro" for selecionado -->
                                     <div id="outro-texto" class="hidden">
                                         <label for="outro-input">Se escolheu "Outro":</label>
-                                        <input type="text" id="outro-input" name="outro_descricao" placeholder="Digite aqui o serviço..." />
+                                        <input type="text" id="outro-input" name="otherService" placeholder="Digite aqui o serviço..." />
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="subject">Conte-nos sobre seu projeto ou ignore se for pra ser notificado sobre a próxima inovação</label>
-                                <textarea id="subject" name="$sobre" rows="5" placeholder="Descreva suas necessidades, objetivos e qualquer informação relevante sobre o projeto..."></textarea>
+                                <textarea id="subject" name="observacao" rows="5" placeholder="Descreva suas necessidades, objetivos e qualquer informação relevante sobre o projeto..."></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label>Como nos conheceu?</label>
                                 <div class="checkbox-grid">
                                     <label class="checkbox-option">
-                                        <input type="checkbox" name="$conheceu" value="instagram">
+                                        <input type="checkbox" name="indicacao[]" value="instagram">
                                         <span class="checkbox-custom"></span>
                                         <i class="fab fa-instagram"></i>
                                         <span>Instagram</span>
                                     </label>
                                     <label class="checkbox-option">
-                                        <input type="checkbox" name="$conheceu" value="google">
+                                        <input type="checkbox" name="indicacao[]" value="google">
                                         <span class="checkbox-custom"></span>
                                         <i class="fab fa-google"></i>
                                         <span>Pesquisa no Google</span>
                                     </label>
                                     <label class="checkbox-option">
-                                        <input type="checkbox" name="$conheceu" value="indication">
+                                        <input type="checkbox" name="indicacao[]" value="indication">
                                         <span class="checkbox-custom"></span>
                                         <i class="fas fa-user-friends"></i>
                                         <span>Indicação de alguém</span>
                                     </label>
                                     <label class="checkbox-option">
-                                        <input type="checkbox" name="$conheceu" value="linkedin">
+                                        <input type="checkbox" name="indicacao[]" value="linkedin">
                                         <span class="checkbox-custom"></span>
                                         <i class="fab fa-linkedin"></i>
                                         <span>LinkedIn</span>
                                     </label>
                                     <label class="checkbox-option">
-                                        <input type="checkbox" name="$conheceu" value="portfolio">
+                                        <input type="checkbox" name="indicacao[]" value="portfolio">
                                         <span class="checkbox-custom"></span>
                                         <i class="fas fa-briefcase"></i>
                                         <span>Portfólio online</span>
                                     </label>
                                     <label class="checkbox-option">
-                                        <input type="checkbox" name="$conheceu" value="outros">
+                                        <input type="checkbox" name="indicacao[]" value="outros">
                                         <span class="checkbox-custom"></span>
                                         <i class="fas fa-ellipsis-h"></i>
                                         <span>Outros</span>
@@ -525,18 +610,34 @@
                                 </div>
                             </div>
 
-                            <div class="form-actions">
-                                <button type="submit" class="btn-primary">
-                                    <i class="fas fa-paper-plane"></i>
-                                    <span>Enviar mensagem</span>
-                                </button>
-                                <button type="reset" class="btn-secondary">
-                                    <i class="fas fa-undo"></i>
-                                    <span>Limpar formulário</span>
-                                </button>
+                            <!-- Checkbox de Termos e Política de Privacidade -->
+                            <div class="form-group terms-agreement">
+                                <label class="checkbox-option terms-checkbox">
+                                    <input type="checkbox" name="terms-agreement" value="accepted" id="terms-checkbox" required>
+                                    <span class="checkbox-custom"></span>
+                                    <div class="terms-text">
+                                        <i class="fas fa-file-contract"></i>
+                                        <span>
+                                            Concordo com os 
+                                            <a href="termos-uso.html" target="_blank" class="terms-link">Termos de Uso</a> 
+                                            e 
+                                            <a href="politica-privacidade.html" target="_blank" class="terms-link">Política de Privacidade</a>
+                                        </span>
+                                    </div>
+                                </label>
+                                <p class="terms-description">
+                                    Ao marcar esta opção, você confirma que leu e aceita nossas condições de uso e política de privacidade.
+                                </p>
                             </div>
 
-                            <input type="hidden" name="accessKey" value="sf_d5al7bk3edi620aj9ai6hanf">
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary">
+                                    <i class="fas fa-paper-plane"></i> Enviar mensagem
+                                </button>
+                                <button type="reset" class="btn-secondary">
+                                    <i class="fas fa-undo"></i> Limpar formulário
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -578,22 +679,18 @@
                             <h4 class="footer-title">Serviços</h4>
                             <ul class="footer-list">
                                 <li><a href="index.html#services" class="footer-link">Desenvolvimento Web</a></li>
-                                <li><a href="index.html#services" class="footer-link">Segurança Cibernética</a></li>
-                                <li><a href="index.html#services" class="footer-link">Desenvolvimento Desktop</a></li>
-                                <li><a href="index.html#services" class="footer-link">Backend & APIs</a></li>
-                                <li><a href="index.html#services" class="footer-link">Inteligência Artificial</a></li>
-                                <li><a href="index.html#services" class="footer-link">Consultoria Técnica</a></li>
+                                <li><a href="index.html#services" class="footer-link">DevSecOps</a></li>
+                                <li><a href="index.html#services" class="footer-link">AppSec</a></li>
                             </ul>
                         </div>
 
                         <div class="footer-column">
                             <h4 class="footer-title">Empresa</h4>
                             <ul class="footer-list">
-                                <li><a href="index.html#about" class="footer-link">Sobre Nós</a></li>
-                                <li><a href="index.html#team" class="footer-link">Nossa Equipe</a></li>
+                                <li><a href="sobre.html" class="footer-link">Sobre Nós</a></li>
+                                <li><a href="time.html" class="footer-link">Nossa Equipe</a></li>
                                 <li><a href="portfólio.html" class="footer-link">Portfólio</a></li>
                                 <li><a href="inovacao.html" class="footer-link">Soluções</a></li>
-                                <li><a href="contato.html" class="footer-link">Contato</a></li>
                             </ul>
                         </div>
 
@@ -620,32 +717,17 @@
                 <div class="footer-bottom">
                     <div class="footer-bottom-content">
                         <p class="copyright">
-                            &copy; 2025 ScriptHadder. Todos os direitos reservados.
+                            &copy; 2026 ScriptHadder. Todos os direitos reservados.
                         </p>
                         <div class="footer-legal">
-                            <a href="#" class="legal-link">Política de Privacidade</a>
-                            <a href="#" class="legal-link">Termos de Uso</a>
-                            <a href="#" class="legal-link">Cookies</a>
+                            <a href="politica-privacidade.html" class="legal-link">Política de Privacidade</a>
+                            <a href="termos-uso.html" class="legal-link">Termos de Uso</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-
-    <!-- Modal de Sucesso -->
-    <div id="successModal" class="modal-success">
-        <div class="modal-content">
-            <div class="checkmark-wrapper">
-                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
-                    <path class="checkmark-check" fill="none" d="M14 27l7 7 16-16"/>
-                </svg>
-            </div>
-            <h3>Mensagem enviada com sucesso!</h3>
-            <p>Obrigado pelo contato! Nossa equipe responderá em até 24 horas.</p>
-        </div>
-    </div>
 
     <!-- Botão de Voltar ao Topo -->
     <div class="topo">
@@ -704,47 +786,6 @@
             });
         }
 
-        // Função para formatar telefone
-        function formatPhone(input) {
-            let value = input.value.replace(/\D/g, "");
-            if (value.length > 11) value = value.slice(0, 11);
-
-            if (value.length > 0) {
-                value = "(" + value;
-                if (value.length > 3) value = value.slice(0, 3) + ") " + value.slice(3);
-                if (value.length > 10) value = value.slice(0, 10) + "-" + value.slice(10);
-            }
-            input.value = value;
-        }
-
-        // Envio do formulário
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const data = new FormData(form);
-
-            try {
-                await fetch(form.action, {
-                    method: form.method,
-                    body: data,
-                });
-
-                form.reset();
-
-                // Mostrar modal
-                const modal = document.getElementById('successModal');
-                modal.style.display = 'flex';
-
-                // Fechar automaticamente após 4 segundos
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 4000);
-
-            } catch (err) {
-                alert('Ocorreu um erro ao enviar. Tente novamente.');
-            }
-        });
-
         // Animação de entrada dos cards
         const observerOptions = {
             threshold: 0.1,
@@ -766,20 +807,6 @@
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'all 0.6s ease';
             observer.observe(card);
-        });
-
-        // Seleciona todos os radios
-        const radios = document.querySelectorAll('input[name="servico"]');
-        const outroTexto = document.getElementById('outro-texto');
-
-        radios.forEach(radio => {
-            radio.addEventListener('change', function () {
-                if (this.value === 'outro') {
-                    outroTexto.classList.remove('hidden');
-                } else {
-                    outroTexto.classList.add('hidden');
-                }
-            });
         });
     </script>
 </body>
